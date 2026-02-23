@@ -1,7 +1,9 @@
-from flask import Flask
+from flask import Flask, url_for, render_template
 
 app = Flask(__name__)
 
+url_for('static', filename='style.css')
+
 @app.route("/")
 def home():
-    return "Hello, world!"
+    return render_template()
