@@ -5,13 +5,14 @@ def rand(max):
     return random()*max
 
 def asterisk():
-    WIDTH = 2000
-    HEIGHT = 2000
+    WIDTH = 10000
+    HEIGHT = 10000
 
     stars = [
         svg.Text(
             text="*",
             font_family="monospace",
+            font_size=40,
             fill="white",
             x=xy[0],
             y=xy[1],

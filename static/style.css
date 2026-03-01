@@ -1,3 +1,24 @@
-body {
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
     background-color: black;
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes rotate_bkg {
+  from { transform: translate(-50%, -50%) rotate(0deg) scale(0.5); }
+  to   { transform: translate(-50%, -50%) rotate(360deg) scale(0.5); }
+}
+
+img {
+    position: absolute;
+    top: 150vmax;
+    left: 50%;
+    transform-origin: center;
+    animation: rotate_bkg 360s linear infinite;
+    width: 750vmax;
+    height: auto;
 }
