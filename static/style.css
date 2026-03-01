@@ -3,7 +3,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-color:rgb(24, 24, 33);
     overflow: hidden;
     position: relative;
 }
@@ -13,12 +13,45 @@ html, body {
   to   { transform: translate(-50%, -50%) rotate(360deg) scale(0.5); }
 }
 
-img {
+img.star-image {
     position: absolute;
     top: 150vmax;
     left: 50%;
     transform-origin: center;
     animation: rotate_bkg 360s linear infinite;
-    width: 750vmax;
+    width: 750rem;
+    height: auto;
+}
+
+/*
+.stars {
+    filter: url(#warp);
+}*/
+
+
+.grad-filter {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 200% 200% at 50% 150%,
+        rgb(64, 51, 67) 10%,
+        rgba(29, 29, 40, 0.6) 75%
+    );
+    pointer-events: none;
+}
+
+.mtn-wrap {
+    position: absolute;
+    height: 40vh;
+    width: 110%;
+    z-index: 10;
+    bottom:0;
+    transform: translate(-5%,0%);
+}
+
+svg.mt-nittany {
+    fill: rgb(19, 19, 19);
+    width: 100rem;
+    min-width: 100;
     height: auto;
 }

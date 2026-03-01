@@ -1,5 +1,5 @@
 import svg
-from random import random
+from random import random, choice
 
 def rand(max):
     return random()*max
@@ -10,16 +10,16 @@ def asterisk():
 
     stars = [
         svg.Text(
-            text="*",
-            font_family="monospace",
+            text=xys[2],
+            font_family="JetBrains Mono",
             font_size=40,
             fill="white",
-            x=xy[0],
-            y=xy[1],
+            x=xys[0],
+            y=xys[1],
             transform=f"rotate({rand(360)})",
-            transform_origin=(xy[0], xy[1])
+            transform_origin=(xys[0], xys[1])
         )
-        for xy in [(rand(WIDTH), rand(HEIGHT)) for _ in range(1000)]
+        for xys in [(rand(WIDTH), rand(HEIGHT), choice(['+','.'])) for _ in range(1000)]
     ]
 
     group = svg.G(
