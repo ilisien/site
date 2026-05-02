@@ -3,6 +3,10 @@
     <head>
         <title>ian lisien</title>
         <link rel="stylesheet" href="static/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+        <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     </head>
     <body>
         <div class="bkg-wrap">
@@ -15,26 +19,61 @@
             </div>
         </div>
         <div class="main-wrap">
+
+            <div class="bio-overlay" id="bio">
+                <div class="bio-wrapper">
+                    <a href="#" class="modal-close">✕</a>
+                    <div class="bio">
+                        <span class="header">Bio</span>
+                        <br>
+                        I am a first-year in the Schreyer Honors College at the Pennsylvania State University majoring in chemical engineering and plant sciences with hopeful minors in creative writing and biochemistry. I have particular interests in learning and architecting the chemical systems of plants: in their internal biochemistry, their chemical ecological interactions, and in the application of those processes in service to society.
+                        <br><br>
+                        A cross-country coach once told me on picking when to run vs. jog during races that I ought to sprint up the hills, and slow going down them. My approach towards academics is well summarized by that strategy: quality, thoroughness, and challenging myself in the interest of growth are all fundamentals. I am in university to take lots of classes, to struggle, and to end up not just more knowledgeable, but a stronger student than when I started.
+                        <br><br>
+                        Outside of academics, I am a member and the current art editor for <a href="https://kalliope.psu.edu/" class="link">Kalliope</a>, a novice rower for <a href="https://www.pennstatecrew.com/" class="link">Club Crew</a>, and am working to be able to identify the 500 most common plants in the forests, fields, and bogs of Central Pennsylvania. I am excited to be helping with research this summer between the grain production and weed science labs at Penn State, where I hope to translate the work I've done this year into research skills in the agricultural sciences.
+                    </div>
+                </div>
+            </div>
+
+            <!-- gate modal -->
+            <div class="gate-overlay" id="gate-writing">
+                <div class="gate-box">
+                    <span class="gate-label">What was the last name of the American Literature professor the easternmost side of the library at Penn State was named after?</span>
+                    <span class="gate-label-context">(this helps prevent robot scraping)</span>
+                    <form method="POST" action="/login">
+                        <input type="hidden" name="next" value="/writing">
+                        <input class="gate-input" type="password" name="password" placeholder="password" autocomplete="off">
+                        <div style="display:flex; gap:0.75rem; align-items:center; margin-top:0.75rem">
+                            <button class="gate-btn" type="submit">enter →</button>
+                            <a class="gate-btn" style="border:none; opacity:0.5; text-decoration:none" href="#">cancel</a>
+                        </div>
+                        {% if request.args.get("error") %}
+                            <p class="gate-error">wrong password</p>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+
             <div class="title-wrap">
                 <div class="spacer"></div>
                 <span class="title">Hi!</span>
                 <span class="title">I'm Ian Lisien</span>
-                <span class="subtitle">1st year in Chemical Engineering and Plant Sciences</span>
-                <span class="subtitle">Schreyer Honors College at Penn State!</span>
+                <span class="subtitle">Chemical Engineering, Plant Sciences</span>
+                <span class="subtitle">Schreyer Honors College at Penn State</span>
             </div>
 
             <div class="footer-wrap">
                 <div class="warning-wrap">
-                    <span class="warning">hey! this is just a draft for a class! come back may 1st for more!</span>
                     <div class="footer-nav-wrap">
-                        <span class="footer-text">bio</span>
+                        <span class="footer-text"><a href="#bio">bio</a></span>
                         <span class="footer-text"><a href="static/resume_lisienian_v21.pdf">resume</a></span>
-                        <span class="footer-text">projects</span>
-                        <span class="footer-text">writing</span>
-                        <span class="footer-text">photos</span>
+                        <span class="footer-text"><a href="#gate-writing">writing</a></span>
                     </div>
                 </div>
             </div>
+
+            <div id="content"></div>
+
         </div>
     </body>
 </html>
