@@ -8,6 +8,14 @@ app.secret_key = SECRET_KEY
 
 MOBILE_UA_TOKENS = ("mobi", "android", "iphone", "ipod", "windows phone", "blackberry", "opera mini", "iemobile")
 
+@app.after_request
+def add_cache_headers(response):
+    if request.path.endswith('.css'):
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Expires'] = '0'
+    return response
+
 def is_mobile():
     ua = (request.headers.get("User-Agent") or "").lower()
     return any(tok in ua for tok in MOBILE_UA_TOKENS)
