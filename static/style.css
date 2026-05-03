@@ -157,6 +157,11 @@ span.warning {
     transition: color 0.5s;
 }
 
+body:has(.grad-filter:hover) .footer-nav-wrap span {
+    color: rgb(235, 160, 252);
+    transition: color 0.5s;
+}
+
 .bio-overlay {
     display: flex;
     position: fixed;
@@ -184,6 +189,7 @@ span.warning {
     padding: 2rem 2.5rem;
     max-width: 600px;
     width: 90%;
+    max-height: 80vh;
     position: relative;
     font-family: "Manrope";
 }
@@ -194,6 +200,8 @@ span.warning {
     font-size: 1.2rem;
     line-height: 1.7;
     font-family: newsreader;
+    overflow: scroll;
+    height: 80vh;
 }
 
 
@@ -213,7 +221,6 @@ span.header {
 }
 .modal-close:hover { color: rgb(235, 160, 252); }
 
-/* gate modal */
 .gate-overlay {
     display: flex;
     position: fixed;
@@ -366,3 +373,136 @@ span.header {
 .writing-card input:checked ~ .writing-card-body { display: block; }
 .writing-card input:checked ~ label .writing-card-toggle::after { content: "↑ close"; }
 .writing-card-toggle::after { content: "↓ read"; }
+
+html:has(body.mobile) {
+    overflow: auto;
+    height: auto;
+}
+body.mobile {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100%;
+}
+body.mobile img.star-image,
+body.mobile .grad-filter,
+body.mobile .mtn-wrap {
+    position: fixed;
+}
+
+body.mobile .main-wrap {
+    justify-content: flex-start;
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 28vh;
+    box-sizing: border-box;
+}
+body.mobile .title-wrap {
+    width: 90%;
+    height: auto;
+}
+body.mobile .spacer {
+    height: 6rem;
+}
+body.mobile span.title {
+    font-size: 3rem;
+}
+body.mobile span.subtitle {
+    font-size: 1.1rem;
+}
+
+body.mobile .footer-wrap {
+    position: fixed;
+    left: 5%;
+    bottom: 1rem;
+    width: 90%;
+    box-sizing: border-box;
+    margin-top: 0;
+    z-index: 100;
+}
+body.mobile .footer-nav-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+body.mobile .footer-nav-wrap span.footer-text {
+    font-size: 1.4rem;
+}
+body.mobile .mtn-wrap {
+    height: 25vh;
+}
+body.mobile svg.mt-nittany-svg {
+    width: 60rem;
+}
+body.mobile .grad-filter {
+    background: radial-gradient(
+        ellipse 250% 200% at 50% 130%,
+        rgb(95, 68, 101) 10%,
+        rgba(29, 29, 40, 0.6) 75%
+    );
+}
+
+@media (max-height: 600px) {
+    body.mobile .spacer { height: 1rem; }
+    body.mobile span.title { font-size: 2rem; }
+    body.mobile span.subtitle { font-size: 0.95rem; }
+    body.mobile .footer-nav-wrap { gap: 0.25rem; }
+    body.mobile .footer-nav-wrap span.footer-text { font-size: 1.2rem; }
+    body.mobile .mtn-wrap { height: 38vh; }
+    body.mobile .main-wrap { padding-bottom: 40vh; }
+}
+
+body.mobile .bio-wrapper {
+    padding: 1.5rem 1.5rem;
+    width: 88%;
+}
+body.mobile .bio {
+    font-size: 1rem;
+    line-height: 1.55;
+}
+body.mobile span.header {
+    font-size: 1.5rem;
+}
+
+body.mobile .gate-box {
+    width: 85%;
+    max-width: 320px;
+    padding: 1.5rem 1.5rem;
+}
+body.mobile .gate-label {
+    font-size: 0.95rem;
+}
+
+body.mobile .writing-page {
+    padding: 2rem 1.25rem;
+}
+body.mobile .writing-back {
+    margin-bottom: 1.5rem;
+}
+body.mobile .writing-title {
+    font-size: 2rem;
+    margin: 0 0 1.75rem;
+}
+body.mobile .writing-card {
+    padding: 1.25rem 1.25rem;
+    border-radius: 12px;
+}
+body.mobile .writing-card-header {
+    gap: 0.75rem;
+}
+body.mobile .writing-card-title {
+    font-size: 1.15rem;
+}
+body.mobile .writing-card-meta {
+    font-size: 0.72rem;
+    white-space: normal;
+}
+body.mobile .writing-card-blurb {
+    font-size: 0.92rem;
+}
+body.mobile .writing-card-toggle {
+    font-size: 0.78rem;
+}
+body.mobile .writing-card-body {
+    font-size: 0.98rem;
+}

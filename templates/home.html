@@ -2,13 +2,14 @@
 <html>
     <head>
         <title>ian lisien</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="static/style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     </head>
-    <body>
+    <body{% if is_mobile %} class="mobile"{% endif %}>
         <div class="bkg-wrap">
             <div class="stars">
                 <img src="static/asterisk.svg" class="star-image">
@@ -35,7 +36,6 @@
                 </div>
             </div>
 
-            <!-- gate modal -->
             <div class="gate-overlay" id="gate-writing">
                 <div class="gate-box">
                     <span class="gate-label">What was the last name of the American Literature professor the easternmost side of the library at Penn State was named after?</span>

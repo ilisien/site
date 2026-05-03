@@ -6,6 +6,12 @@ from envsecrets import SECRET_KEY, PASSWORD
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
 
+MOBILE_UA_TOKENS = ("mobi", "android", "iphone", "ipod", "windows phone", "blackberry", "opera mini", "iemobile")
+
+def is_mobile():
+    ua = (request.headers.get("User-Agent") or "").lower()
+    return any(tok in ua for tok in MOBILE_UA_TOKENS)
+
 def requires_auth(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -16,7 +22,7 @@ def requires_auth(f):
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("home.html", is_mobile=is_mobile())
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -29,7 +35,7 @@ def login():
 @app.route("/writing")
 @requires_auth
 def writing():
-    return render_template("writing.html")
+    return render_template("writing.html", is_mobile=is_mobile())
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
